@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Subject1.css">
+    <title>Document</title>
+</head>
+<body> 
+<h3> player cards:</h3>
+    <div id="player-hand"></div>
+<h3> player cards value:</h3>
+ <div id="player-hand-value"></div>
+<h3> delar cards:</h3>
+    <div id="dealr-hand-value"></div>
+<h3> dealr cards value:</h3>
+    <div id="dealr-hand"></div>
+    <button onClick="hit()">Hit!</button>
+       <button onClick="Stand()">Stand!</button>
+
+ <script>
+var deck =[2,3,4,5,6,7,8,9,10,10,10,10,11,
+2,3,4,5,6,7,8,9,10,10,10,10,11,
+2,3,4,5,6,7,8,9,10,10,10,10,11,
+2,3,4,5,6,7,8,9,10,10,10,10,11];
+var playerHand;
+var dealrHand;
+function drawRandomCard(deck){
+ var randomindex=Math.floor(deck.length * Math.random());
+ return deck[randomindex];
+ }
+
+console.log(drawRandomCard(deck));
+function startgame()
+{
+    playerHand=[drawRandomCard(deck),drawRandomCard(deck)];
+    dealrHand=[drawRandomCard(deck),drawRandomCard(deck)];
+}
+function getvaluehand(hand)
+{
+    var sum=0;
+    for(var i=0;i<hand.length;i++)
+    {
+        sum+=hand[i];
+    }
+return sum;
+
+}
+
+startgame();
+console.log('player hand:'+playerHand);
+console.log('player hand value:'+getvaluehand(playerHand));
+console.log('delar hand:'+dealrHand);
+console.log('delar hand:'+getvaluehand(dealrHand));
+
+function hit()
+{
+playerHand.push(drawRandomCard(deck));
+console.log('new player hand:'+playerHand);
+if(getvaluehand(playerHand)>21){
+    document.write("TO MANY!!");
+}
+}
+function Stand()
+{
+player.push(drawRandomCard(deck));
+console.log('new player hand:'+playerHand);
+
+}
+document.getElementById("player-hand").innerHTML=playerHand;
+document.getElementById("player-hand-value").innerHTML=getvaluehand(playerHand);
+document.getElementById("dealr-hand").innerHTML=dealrHand;
+document.getElementById("delar-hand-value").innerHTML=getvaluehand(dealrHand);
+
+
+ </script>
+
+</body>
+</html>
